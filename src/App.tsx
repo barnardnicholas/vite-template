@@ -1,13 +1,21 @@
 import { Suspense } from 'react';
-import { Typography } from '@mui/material';
-import DemoPage from '@pages/demo/DemoPage';
+import JotaiDemo from '@pages/jotaiDemo/JotaiDemo';
+import Header from '@components/Header';
+import QueryDemo from '@pages/queryDemo/QueryDemo';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <Suspense fallback={<></>}>
-      <div className="App">
-        <DemoPage />
-      </div>
+      <QueryClientProvider client={queryClient}>
+        <div className="App">
+          <Header />
+          <JotaiDemo />
+          <QueryDemo />
+        </div>
+      </QueryClientProvider>
     </Suspense>
   );
 }
