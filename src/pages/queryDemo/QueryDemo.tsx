@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Stack, Typography } from '@mui/material';
+import { Alert, Box, CircularProgress, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import axios from '../../services/api';
 
@@ -23,13 +23,19 @@ function TodoList() {
   const { isLoading, error, data, isSuccess } = useQuery({
     queryKey: [todoQueryKeys.TODOLIST],
     queryFn: fetchTodos(),
+    // staleTime: 6000,
   });
 
-  if (error) return <Box>Error</Box>;
-  if (isLoading) return <Typography>Loading...</Typography>;
+  if (error) return <Alert severity="error">Error fetching data</Alert>;
+  if (isLoading)
+    return (
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box>
+    );
   return isSuccess ? (
     <Stack>
-      {data?.map((todo: Todo) => (
+      {data?.slice(0, 9).map((todo: Todo) => (
         <Box key={todo.id}>{todo.title}</Box>
       ))}
     </Stack>
