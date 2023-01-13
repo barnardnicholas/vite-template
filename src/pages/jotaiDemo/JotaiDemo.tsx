@@ -1,21 +1,9 @@
 import React from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Divider, Typography } from '@mui/material';
 import { atom, useAtom } from 'jotai';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
-
-const flexStyles = {
-  display: 'flex',
-  p: 1,
-};
-
-const buttonStyles = {
-  mr: 1,
-  border: '1px solid',
-};
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-export const countAtom = atom<number>(0);
+import { countAtom, localStorageAtom, sessionStorageAtom } from './atoms';
+import { buttonStyles, flexStyles } from './constants';
 
 function AtomDemo() {
   const [count, setCount] = useAtom(countAtom);
@@ -29,10 +17,6 @@ function AtomDemo() {
   );
 }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-export const localStorageAtom = atomWithStorage<number>('localCount', 0);
-
 function LocalStorageAtomDemo() {
   const [localCount, setLocalCount] = useAtom(localStorageAtom);
   return (
@@ -44,14 +28,6 @@ function LocalStorageAtomDemo() {
     </Box>
   );
 }
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-export const sessionStorageAtom = atomWithStorage<number>(
-  'sessionCount',
-  0,
-  createJSONStorage(() => window.sessionStorage),
-);
 
 function SessionStorageAtomDemo() {
   const [sessionCount, setSessionCount] = useAtom(sessionStorageAtom);
@@ -65,13 +41,12 @@ function SessionStorageAtomDemo() {
   );
 }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 function JotaiDemo() {
   return (
     <>
-      <Box sx={{ p: 2, mt: 12 }}>
+      <Box sx={{ p: 2 }}>
         <Typography variant="h4">JOTAI DEMOS</Typography>
+        <Divider sx={{ m: 2 }} />
         <AtomDemo />
         <LocalStorageAtomDemo />
         <SessionStorageAtomDemo />

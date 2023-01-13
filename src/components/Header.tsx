@@ -1,9 +1,9 @@
 import React from 'react';
-import { AppBar, Box, Button, Typography } from '@mui/material';
+import { AppBar, Box, Button, CircularProgress, Divider, Typography } from '@mui/material';
 import { useAtom } from 'jotai';
-import { countAtom, localStorageAtom, sessionStorageAtom } from '@pages/jotaiDemo/JotaiDemo';
 import { useQueryClient } from '@tanstack/react-query';
-import { todoQueryKeys } from '@pages/queryDemo/QueryDemo';
+import { todoQueryKeys } from '@pages/queryDemo/queries';
+import { countAtom, localStorageAtom, sessionStorageAtom } from '@pages/jotaiDemo/atoms';
 
 function Header() {
   const [a] = useAtom(countAtom);
@@ -20,8 +20,9 @@ function Header() {
           <Button
             onClick={() => queryClient.invalidateQueries({ queryKey: [todoQueryKeys.TODOLIST] })}
           >
-            INVALIDATE
+            INVALIDATE TODO QUERY
           </Button>
+          <Divider orientation="vertical" sx={{ marginLeft: 2, marginRight: 2 }} />
           <Box sx={{ p: 2 }}>Atom: {a}</Box>
           <Box sx={{ p: 2 }}>LS: {ls}</Box>
           <Box sx={{ p: 2 }}>SS: {ss}</Box>

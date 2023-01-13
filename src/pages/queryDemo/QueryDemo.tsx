@@ -1,33 +1,14 @@
 import React from 'react';
-import { Alert, Box, CircularProgress, Stack, Typography } from '@mui/material';
+import { Alert, Box, CircularProgress, Divider, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
-import axios from '../../services/api';
-
-interface Todo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
-export enum todoQueryKeys {
-  TODOLIST = 'TODOLIST',
-}
-
-export const fetchTodos = () => async () => {
-  const { data } = await axios.get('https://jsonplaceholder.typicode.com/todos/');
-  return data;
-};
+import { fetchTodoQueryConfig, fetchTodos, todoQueryKeys } from './queries';
+import { Todo } from './types';
 
 function TodoList() {
-  const { isLoading, error, data, isSuccess } = useQuery({
-    queryKey: [todoQueryKeys.TODOLIST],
-    queryFn: fetchTodos(),
-    // staleTime: 6000,
-  });
+  const { isLoading, isFetching, error, data, isSuccess } = useQuery(fetchTodoQueryConfig);
 
   if (error) return <Alert severity="error">Error fetching data</Alert>;
-  if (isLoading)
+  if (isLoading || isFetching)
     return (
       <Box sx={{ display: 'flex' }}>
         <CircularProgress />
@@ -45,7 +26,8 @@ function TodoList() {
 function QueryDemo() {
   return (
     <Box sx={{ p: 2 }}>
-      <Typography variant="h4">QUERY DEMO</Typography>
+      <Typography variant="h4">REACT-QUERY DEMO</Typography>
+      <Divider sx={{ m: 2 }} />
       <Typography variant="h5">Todo List:</Typography>
       <TodoList />
     </Box>
