@@ -1,9 +1,11 @@
-import { defineConfig } from "vite";
-import type { UserConfig } from "vite"; 
-import react from "@vitejs/plugin-react";
-import legacy from "@vitejs/plugin-legacy";
-import tsconfigPaths from "vite-tsconfig-paths";
-import mkcert from "vite-plugin-mkcert";
+import { defineConfig } from 'vite';
+import type { UserConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import legacy from '@vitejs/plugin-legacy';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import mkcert from 'vite-plugin-mkcert';
+import jotaiDebugLabel from 'jotai/babel/plugin-debug-label';
+import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh';
 
 export default defineConfig(({ command, mode }) => {
   const config: UserConfig = {
@@ -11,19 +13,19 @@ export default defineConfig(({ command, mode }) => {
       https: true,
     },
     plugins: [
-      react(),
+      react({ babel: { plugins: [jotaiDebugLabel, jotaiReactRefresh] } }),
       tsconfigPaths(),
       legacy(),
       mkcert({
-        source: "coding",
+        source: 'coding',
       }),
     ],
     build: {
       rollupOptions: {
         output: {
           manualChunks: {
-            react: ["react"],
-            "react-dom": ["react-dom"],
+            react: ['react'],
+            'react-dom': ['react-dom'],
           },
         },
       },
