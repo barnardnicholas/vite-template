@@ -28,16 +28,16 @@ function QueryDemo() {
   const [showCachedData, setShowCachedData] = useState<boolean>(false);
 
   const cachedData = queryClient.getQueryData([todoQueryKeys.TODOLIST]);
-  
+
   return (
     <Box sx={{ p: 2 }}>
       <Typography variant="h4">REACT-QUERY DEMO</Typography>
-      <Divider sx={{ m: 2 }} />
+      <Divider sx={{ my: 2 }} />
       <Typography variant="h5">Todo List:</Typography>
       <TodoList />
-      <Divider sx={{ m: 2 }} />
+      <Divider sx={{ my: 2 }} />
       <Typography variant="h4">CACHED DATA</Typography>
-      <Divider sx={{ m: 2 }} />
+      <Divider sx={{ my: 2 }} />
       <Button onClick={() => setShowCachedData(!showCachedData)}>SHOW DATA</Button>
       {showCachedData && JSON.stringify(cachedData)}
     </Box>

@@ -46,7 +46,7 @@ function JotaiDemo() {
     <>
       <Box sx={{ p: 2 }}>
         <Typography variant="h4">JOTAI DEMOS</Typography>
-        <Divider sx={{ m: 2 }} />
+        <Divider sx={{ my: 2 }} />
         <AtomDemo />
         <LocalStorageAtomDemo />
         <SessionStorageAtomDemo />
