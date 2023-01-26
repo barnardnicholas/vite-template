@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, Divider, Typography } from '@mui/material';
 import { atom, useAtom } from 'jotai';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
-import { countAtom, localStorageAtom, sessionStorageAtom } from './atoms';
+import { countAtom, derivedAtom, localStorageAtom, sessionStorageAtom } from './atoms';
 import { buttonStyles, flexStyles } from './constants';
 
 function AtomDemo() {
@@ -41,6 +41,15 @@ function SessionStorageAtomDemo() {
   );
 }
 
+function DerivedAtomDemo() {
+  const [derived] = useAtom(derivedAtom);
+  return (
+    <Box sx={flexStyles}>
+      <Typography>{JSON.stringify(derived)}</Typography>
+    </Box>
+  );
+}
+
 function JotaiDemo() {
   return (
     <>
@@ -50,6 +59,7 @@ function JotaiDemo() {
         <AtomDemo />
         <LocalStorageAtomDemo />
         <SessionStorageAtomDemo />
+        <DerivedAtomDemo />
       </Box>
     </>
   );
