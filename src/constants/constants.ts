@@ -7,5 +7,6 @@ export const flexStyles = {
 
 export const buttonStyles = {
   mr: 1,
+  my: 1,
   border: '1px solid',
 };

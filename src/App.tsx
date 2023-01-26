@@ -5,10 +5,12 @@ import QueryDemo from '@pages/queryDemo/QueryDemo';
 import { atom, useAtom } from 'jotai';
 import { Box, Tab, Tabs } from '@mui/material';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
+import ZustandDemo from '@pages/zustandDemo/ZustandDemo';
 
 export enum mainTabs {
   JOTAI = 0,
   REACTQUERY = 1,
+  ZUSTAND = 2,
 }
 
 export const activeTabAtom = atomWithStorage<mainTabs>(
@@ -30,9 +32,11 @@ function App() {
         >
           <Tab label="JOTAI" />
           <Tab label="REACT-QUERY" />
+          <Tab label="ZUSTAND" />
         </Tabs>
         {activeTab === mainTabs.JOTAI && <JotaiDemo />}
         {activeTab === mainTabs.REACTQUERY && <QueryDemo />}
+        {activeTab === mainTabs.ZUSTAND && <ZustandDemo />}
       </div>
     </Suspense>
   );

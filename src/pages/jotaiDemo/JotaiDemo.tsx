@@ -3,7 +3,7 @@ import { Box, Button, Divider, Typography } from '@mui/material';
 import { atom, useAtom } from 'jotai';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 import { countAtom, derivedAtom, localStorageAtom, sessionStorageAtom } from './atoms';
-import { buttonStyles, flexStyles } from './constants';
+import { buttonStyles, flexStyles } from '../../constants/constants';
 
 function AtomDemo() {
   const [count, setCount] = useAtom(countAtom);
