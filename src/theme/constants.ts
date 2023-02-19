@@ -20,3 +20,16 @@ export const titleText = {
   lineHeight: '1em',
   marginBottom: '1rem',
 };
+
+export const bodyText = {
+  fontFamily: [
+    'Trispace',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+  marginBottom: '1rem',
+  letterSpacing: '-0.05em',
+};

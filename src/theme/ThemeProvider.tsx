@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
 import { blue, green, grey, lightBlue, orange, red } from '@mui/material/colors';
-import { muiToolbarHeights, titleText } from './constants';
+import { bodyText, muiToolbarHeights, titleText } from './constants';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -10,14 +10,7 @@ type ThemeProviderProps = {
 
 const theme = createTheme({
   typography: {
-    fontFamily: [
-      'Trispace',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
+    ...bodyText,
     h1: {
       ...titleText,
       textTransform: 'uppercase',
@@ -47,6 +40,7 @@ const theme = createTheme({
       fontSize: '1.25rem',
     },
     body1: {
+      ...bodyText,
       marginBottom: '1em',
     },
   },
