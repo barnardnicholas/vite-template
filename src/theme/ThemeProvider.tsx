@@ -41,36 +41,38 @@ const theme = createTheme({
     },
     body1: {
       ...bodyText,
-      marginBottom: '1em',
     },
   },
   palette: {
     mode: 'dark',
-    // primary: {
-    //   main: blue[700],
-    //   light: blue[50],
-    // },
-    // error: {
-    //   main: red[700],
-    //   light: red[50],
-    // },
-    // success: {
-    //   main: green[800],
-    //   light: green[50],
-    // },
-    // warning: {
-    //   main: orange[800],
-    // },
-    // info: {
-    //   main: lightBlue[700],
-    // },
-    // secondary: {
-    //   main: grey[800],
-    //   light: grey[50],
-    // },
+    primary: {
+      main: blue[50],
+      light: blue[700],
+    },
+    error: {
+      main: red[50],
+      light: red[700],
+    },
+    success: {
+      main: green[50],
+      light: green[800],
+    },
+    warning: {
+      main: orange[800],
+    },
+    info: {
+      main: lightBlue[200],
+    },
+    secondary: {
+      main: grey[50],
+      light: grey[800],
+    },
     text: {
       primary: grey[200],
       secondary: '#666666',
+    },
+    background: {
+      default: '#272730',
     },
   },
 });
@@ -89,6 +91,13 @@ theme.components = {
         [theme.breakpoints.down('md')]: {
           height: muiToolbarHeights.md,
         },
+      },
+    },
+  },
+  MuiCard: {
+    styleOverrides: {
+      root: {
+        padding: '1rem',
       },
     },
   },
