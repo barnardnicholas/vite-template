@@ -4,9 +4,9 @@ import App from './App';
 import { Provider as JotaiStoreProvider } from 'jotai';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { queryClientAtom } from 'jotai/query';
-import './index.css';
+// import './index.css';
 import { ThemeProvider } from './theme/ThemeProvider';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient();
 
@@ -21,7 +21,7 @@ root.render(
           <App />
         </ThemeProvider>
       </JotaiStoreProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   </React.StrictMode>,
 );

@@ -6,7 +6,7 @@ import { useAtom } from 'jotai';
 import { Box, Container, Tab, Tabs, Typography } from '@mui/material';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 import ZustandDemo from '@pages/zustandDemo/ZustandDemo';
-import './App.css';
+import './_styles/main.scss';
 import TestPage from '@pages/TestPage/TestPage';
 
 export enum mainTabs {
