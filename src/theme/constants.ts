@@ -1,5 +1,3 @@
-import { CSSProperties } from '@mui/styled-engine';
-
 export const muiToolbarHeights = {
   xs: 48,
   sm: 56,
@@ -33,3 +31,5 @@ export const bodyText = {
   marginBottom: '1rem',
   letterSpacing: '-0.05em',
 };
+
+export const boxShadow = '0 2px 6px 1px #222222';
